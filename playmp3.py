@@ -12,7 +12,6 @@ filesystemencoding = getfilesystemencoding()
 
 def mciSend(s):
     enc=s.encode(filesystemencoding)
-    
     i=winmm.mciSendStringA(enc,0,0,0)
     if i!=0:
         print("Error %d in mciSendString %s" % ( i, s ))
