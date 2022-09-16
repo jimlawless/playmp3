@@ -11,7 +11,7 @@ winmm = windll.winmm
 filesystemencoding = getfilesystemencoding()
 
 def mciSend(s):
-    enc=s.encode(filesystemencoding)
+    enc=s.encode(filesystemencoding)    
     i=winmm.mciSendStringA(enc,0,0,0)
     if i!=0:
         print("Error %d in mciSendString %s" % ( i, s ))
@@ -21,5 +21,6 @@ def playMP3(mp3Name):
     mciSend("Open \"%s\" Type MPEGVideo Alias theMP3" % mp3Name)
     mciSend("Play theMP3 Wait")
     mciSend("Close theMP3")
-
-playMP3("test.mp3")
+    
+if __name__ == "__main__":
+    playMP3("test.mp3")
