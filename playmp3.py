@@ -4,6 +4,7 @@
 # See: http://jiml.us/license2022.php
 # for full license details.
  
+import argparse 
 from ctypes import *
 from sys import getfilesystemencoding
 
@@ -23,4 +24,8 @@ def playMP3(mp3Name):
     mciSend("Close theMP3")
     
 if __name__ == "__main__":
-    playMP3("test.mp3")
+    parser=argparse.ArgumentParser()
+    parser.description="play an MP3 or WAV file"
+    parser.add_argument("-file",required=True)
+    args=parser.parse_args()
+    playMP3(args.file)
